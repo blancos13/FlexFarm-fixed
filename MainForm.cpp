@@ -36,7 +36,7 @@ UnicodeString GetModulePath() {
 	}
 	return GetCurrentDir();
 }
-//static std::thread httpserver(http::run, "127.0.0.1", "17191");
+static std::thread httpserver(http::run, "127.0.0.1", "17191");
 std::unique_ptr<TIniFile>ini;
 int appvers = 15;
 bool pre = false;
