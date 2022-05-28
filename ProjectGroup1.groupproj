@@ -1,0 +1,39 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1AC0B799-3DAF-4C24-8108-CA63773745B7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\FlexFarm-Growtopia-main\FlexFarm.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FlexFarm.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FlexFarm">
+        <MSBuild Projects="FlexFarm.cbproj"/>
+    </Target>
+    <Target Name="FlexFarm:Clean">
+        <MSBuild Projects="FlexFarm.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FlexFarm:Make">
+        <MSBuild Projects="FlexFarm.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FlexFarm;FlexFarm"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FlexFarm:Clean;FlexFarm:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FlexFarm:Make;FlexFarm:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
